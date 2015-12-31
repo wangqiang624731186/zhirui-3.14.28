@@ -1,0 +1,48 @@
+
+/dts-v1/;
+
+#include "imx6dl.dtsi"
+#include "myimx6ek200-6qu.dtsi"
+
+/ {
+	model = "MYZR i.MX6 DualLite Evaluation Kit (DIMM200)";
+	compatible = "myzr,myimx6ek200-6u", "fsl,imx6q";
+};
+
+&cpu0 {
+	arm-supply = <&reg_arm>;
+	soc-supply = <&reg_soc>;
+};
+
+&gpc {
+	/* use ldo-enable, u-boot will check it and configure */
+	fsl,ldo-bypass = <0>;
+	/* watchdog select of reset source */
+	fsl,wdog-reset = <1>;
+};
+
+&ldb {
+	lvds-channel@0 {
+		crtc = "ipu1-di0";
+	};
+
+	lvds-channel@1 {
+		crtc = "ipu1-di1";
+	};
+};
+
+&mxcfb1 {
+	status = "okay";
+};
+
+&mxcfb2 {
+	status = "okay";
+};
+
+&pxp {
+	status = "okay";
+};
+
+&wdog1 {
+	status = "okay";
+};
